@@ -7,7 +7,7 @@ A template for developing applets for the COSMIC™ desktop environment using [l
 To create an applet with this template, [install `cargo generate`][cargo-generate] and run:
 
 ```sh
-cargo generate gh:cosmic-utils/cosmic-applet-template
+cargo generate gh:pop-os/cosmic-applet-template
 ```
 
 A [justfile](./justfile) is included by default with common recipes used by other COSMIC projects. Install from [casey/just][just]
