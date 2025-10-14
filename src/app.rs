@@ -87,8 +87,9 @@ impl cosmic::Application for AppModel {
 
     /// Describes the interface based on the current state of the application model.
     ///
-    /// Application events will be processed through the view. Any messages emitted by
-    /// events received by widgets will be passed to the update method.
+    /// The applet's button in the panel will be drawn using the main view method.
+    /// This view should emit messages to toggle the applet's popup window, which will
+    /// be drawn using the `view_window` method.
     fn view(&self) -> Element<'_, Self::Message> {
         self.core
             .applet
@@ -97,6 +98,9 @@ impl cosmic::Application for AppModel {
             .into()
     }
 
+    /// The applet's popup window will be drawn using this view method. If there are
+    /// multiple poups, you may match the id parameter to determine which popup to
+    /// create a view for.
     fn view_window(&self, _id: Id) -> Element<'_, Self::Message> {
         let content_list = widget::list_column()
             .padding(5)
@@ -144,7 +148,8 @@ impl cosmic::Application for AppModel {
     /// Handles messages emitted by the application and its widgets.
     ///
     /// Tasks may be returned for asynchronous execution of code in the background
-    /// on the application's async runtime.
+    /// on the application's async runtime. The application will not exit until all
+    /// tasks are finished.
     fn update(&mut self, message: Self::Message) -> Task<cosmic::Action<Self::Message>> {
         match message {
             Message::SubscriptionChannel => {
