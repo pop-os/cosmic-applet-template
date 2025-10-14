@@ -10,8 +10,7 @@ cargo-target-dir := env('CARGO_TARGET_DIR', 'target')
 appdata-dst := base-dir / 'share' / 'appdata' / appid + '.metainfo.xml'
 bin-dst := base-dir / 'bin' / name
 desktop-dst := base-dir / 'share' / 'applications' / appid + '.desktop'
-icon-svg-dst := icons-dst / 'scalable' / 'apps' / appid + '.svg'
-icons-dst := base-dir / 'share' / 'icons' / 'hicolor'
+icon-svg-dst := base-dir / 'share' / 'icons' / 'hicolor' / 'scalable' / 'apps' / appid + '.svg'
 
 # Default recipe which runs `just build-release`
 default: build-release
