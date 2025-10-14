@@ -111,9 +111,10 @@ impl cosmic::Application for AppModel {
 
     /// Register subscriptions for this application.
     ///
-    /// Subscriptions are long-running async tasks running in the background which
-    /// emit messages to the application through a channel. They are started at the
-    /// beginning of the application, and persist through its lifetime.
+    /// Subscriptions are long-lived async tasks running in the background which
+    /// emit messages to the application through a channel. They may be conditionally
+    /// activated by selectively appending to the subscription batch, and will
+    /// continue to execute for the duration that they remain in the batch.
     fn subscription(&self) -> Subscription<Self::Message> {
         struct MySubscription;
 
