@@ -32,7 +32,7 @@ It is recommended to build a source tarball with the vendored dependencies, whic
 
 ## Developers
 
-Developers should install [rustup][rustup] and configure their editor to use [rust-analyzer][rust-analyzer]. To improve compilation times, disable LTO in the release profile, install the [mold][mold] linker, and configure [sccache][sccache] for use with Rust. The [mold][mold] linker will only improve link times if LTO is disabled.
+Developers should install [rustup][rustup] and configure their editor to use [rust-analyzer][rust-analyzer].
 
 [fluent]: https://projectfluent.org/
 [fluent-guide]: https://projectfluent.org/fluent/guide/hello.html
@@ -40,5 +40,4 @@ Developers should install [rustup][rustup] and configure their editor to use [ru
 [just]: https://github.com/casey/just
 [rustup]: https://rustup.rs/
 [rust-analyzer]: https://rust-analyzer.github.io/
-[mold]: https://github.com/rui314/mold
 [sccache]: https://github.com/mozilla/sccache
