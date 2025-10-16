@@ -8,4 +8,7 @@ Terminal=false
 StartupNotify=true
 Categories=COSMIC
 Keywords=COSMIC
+NoDisplay=true
+X-CosmicApplet=true
+X-CosmicHoverPopup=Auto
 MimeType=
