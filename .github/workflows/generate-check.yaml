@@ -1,0 +1,49 @@
+name: Cargo Generate CI
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libdbus-1-dev \
+            libssl-dev \
+            libxkbcommon-dev
+          cargo install cargo-generate
+
+      - name: Prepare custom folder
+        run: mkdir ${{ github.workspace }}/../ci-test
+
+      - name: Run cargo generate in custom folder
+        run: |
+          cargo generate \
+            --path ${{ github.workspace }} \
+            --name example-applet \
+            --define appid="com.github.pop-os.cosmic-app-template"\
+            --define description="example applet"\
+            --define license="MIT"\
+            --define repository-url="https://github.com/pop-os/cosmic-app-template"
+        working-directory: ${{ github.workspace }}/../ci-test
+
+      - name: Run cargo check
+        working-directory: ${{ github.workspace }}/../ci-test/example-applet
+        run: cargo check
+
+      - name: Run cargo clippy
+        working-directory: ${{ github.workspace }}/../ci-test/example-applet
+        run: cargo clippy --all-features
