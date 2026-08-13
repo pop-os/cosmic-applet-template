@@ -4,6 +4,8 @@ A template for developing applets for the COSMIC™ desktop environment using [l
 
 ## Getting Started
 
+> Please refer to the [COSMIC Trademark Policy][cosmic-trademark] when choosing a name for a project.
+
 To create an applet with this template, [install `cargo generate`][cargo-generate] and run:
 
 ```sh
@@ -27,5 +29,5 @@ Refer to the [libcosmic API documentation][api-docs] and [book][book] for help w
 [api-docs]: https://pop-os.github.io/libcosmic/cosmic/
 [book]: https://pop-os.github.io/libcosmic-book/
 [cargo-generate]: https://cargo-generate.github.io/cargo-generate/installation.html
-[libcosmic]: https://github.com/pop-os/libcosmic/
+[cosmic-trademark]: https://github.com/pop-os/cosmic-epoch/blob/master/TRADEMARK.md
 [just]: https://github.com/casey/just
