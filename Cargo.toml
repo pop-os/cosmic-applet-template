@@ -6,6 +6,9 @@ license = "{{ license }}"
 description = "{{ description }}"
 repository = "{{ repository-url }}"
 
+[build-dependencies]
+xdgen = "0.1"
+
 [dependencies]
 i18n-embed-fl = "0.10"
 rust-embed = "8.11"

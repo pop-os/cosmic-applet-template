@@ -1,4 +1,6 @@
 app-title = {{ project-name | title_case }}
+app-comment = {{ description }}
+app-keywords =
 about = About
 view = View
 welcome = Welcome to COSMIC! ✨

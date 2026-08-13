@@ -4,12 +4,15 @@ appid := '{{ appid }}'
 rootdir := ''
 prefix := '/usr'
 
+appdata := appid + '.metainfo.xml'
+desktop := appid + '.desktop'
+
 # Installation paths
 base-dir := absolute_path(clean(rootdir / prefix))
 cargo-target-dir := env('CARGO_TARGET_DIR', 'target')
-appdata-dst := base-dir / 'share' / 'appdata' / appid + '.metainfo.xml'
+appdata-dst := base-dir / 'share' / 'appdata' / appdata
 bin-dst := base-dir / 'bin' / name
-desktop-dst := base-dir / 'share' / 'applications' / appid + '.desktop'
+desktop-dst := base-dir / 'share' / 'applications' / desktop
 icon-dst := base-dir / 'share' / 'icons' / 'hicolor' / 'scalable' / 'apps' / appid + '.svg'
 
 # Default recipe which runs `just build-release`
@@ -50,8 +53,8 @@ run *args:
 # Installs files
 install:
     install -Dm0755 {{ cargo-target-dir / 'release' / name }} {{bin-dst}}
-    install -Dm0644 resources/app.desktop {{desktop-dst}}
-    install -Dm0644 resources/app.metainfo.xml {{appdata-dst}}
+    install -Dm0644 {{ 'target' / 'xdgen' / 'app.desktop' }} {{desktop-dst}}
+    install -Dm0644 {{ 'target' / 'xdgen' / 'app.metainfo.xml' }} {{appdata-dst}}
     install -Dm0644 resources/icon.svg {{icon-dst}}
 
 # Uninstalls installed files
